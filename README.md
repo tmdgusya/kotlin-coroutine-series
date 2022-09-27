@@ -7,6 +7,7 @@
 ## Chpater
 
 - [Chapter01 - 왜 코루틴을 사용해야 하는가?](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/WHY_USE_COROUTINE.md) 
+- [Chapter02 - Continuation](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/CONTINUATION.md)
 
 ## My Blog
 https://devroach.tistory.com/category/Kotlin
