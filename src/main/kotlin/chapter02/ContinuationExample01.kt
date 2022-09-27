@@ -1,6 +1,9 @@
 package chapter02
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.newCoroutineContext
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
 
@@ -15,6 +18,22 @@ suspend fun originalFunction() {
     println("End")
 }
 
+suspend fun main(): Unit = coroutineScope {
+    val continuation = OriginalFunctionContination(
+        completion = Continuation(
+            context = Dispatchers.Main,
+            resumeWith = {}
+        )
+    )
+    println("=====Start=====")
+    val fisrtResult = convertOriginalFunction(continuation)
+    println("FiresResult : $fisrtResult")
+    println("=====Second=====")
+    val secondResult = convertOriginalFunction(continuation)
+    println("SecondResult : $secondResult")
+    println("=====End=====")
+}
+
 class OriginalFunctionContination(
     val completion: Continuation<Unit>
 ):  Continuation<Unit> {
@@ -24,7 +43,8 @@ class OriginalFunctionContination(
     override fun resumeWith(result: Result<Unit>) {
         this.result = result
         val res = try {
-            val r = originalFunction(continuation = this)
+            val r = convertOriginalFunction(continuation = this)
+            println("Result : $r")
             if (r == "COROUTINE_SUSPEND") return
             Result.success(r as Unit)
         } catch (e: Throwable) {
@@ -40,7 +60,7 @@ class OriginalFunctionContination(
 }
 
 @JvmName("originalFunction1")
-fun originalFunction(continuation: Continuation<Unit>): Any {
+fun convertOriginalFunction(continuation: Continuation<Unit>): Any {
 
     continuation as OriginalFunctionContination
 

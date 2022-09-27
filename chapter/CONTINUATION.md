@@ -125,6 +125,45 @@ class OriginalFunctionContinuation(
 그리고 다시 이 함수를 호출시킬때는 현재 continuation 을 넣어주는 것(`originalFunction(continuation = this)`)을 볼 수 있다. 
 위의 코드는 Coroutine 으로 Continuation 의 동작구조를 구현한 것이다.
 
+## 실행
+
+실제로 위의 코드를 실행시켜보자.
+
+```kotlin
+suspend fun main(): Unit = coroutineScope {
+    val continuation = OriginalFunctionContination(
+        completion = Continuation(
+            context = Dispatchers.Main,
+            resumeWith = {}
+        )
+    )
+    println("=====Start=====")
+    val fisrtResult = convertOriginalFunction(continuation)
+    println("FiresResult : $fisrtResult")
+    println("=====Second=====")
+    val secondResult = convertOriginalFunction(continuation)
+    println("SecondResult : $secondResult")
+    println("=====End=====")
+}
+```
+
+실제로 continuation 을 만들고, 어차피 resumeWith 는 실제 Concrete 에서 Override 하고 있기에 정의를 하지 않고 `{}` 위와 같이 정의한다. 
+해당 코드를 실행시켜보면 아래와 같은 결과가 도출된다. 실제로 직접 코드를 쳐보면 더 이해가 잘 갈 것이다.
+
+```kotlin
+// result
+=====Start=====
+Start!!
+FiresResult : COROUTINE_SUSPEND
+=====Second=====
+10
+Local Value
+        End
+SecondResult : kotlin.Unit
+=====End=====
+```
+
+
 ## 효율
 
 만약 2개의 Thread 로 두 부분을 나눠서 했으면 Local Stack 부분을 Copy 하는 Context Switching 이 일어났을 것 이다. 
