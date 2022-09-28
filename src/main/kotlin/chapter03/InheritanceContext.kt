@@ -1,4 +1,4 @@
-package chpater03
+package chapter03
 
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.launch
