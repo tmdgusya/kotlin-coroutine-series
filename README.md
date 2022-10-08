@@ -11,6 +11,7 @@
 - [Chapter03 - COROUTINE_CONTEXT](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/COROUTINE_CONTEXT.md)
 - [Chapter04 - JOB_LIFE_CYCLE](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/JOB_LIFE_CYCLE.md)
 - [Chapter05 - Cancellation And Exception Handling](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/CANCELLATION_AND_EXCEPTION_HANDLING.md)
+- [Chapter06 - Coroutine Scope](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/COROUTINE_SCOPE.md)
 
 ## My Blog
 https://devroach.tistory.com/category/Kotlin
