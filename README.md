@@ -4,6 +4,8 @@
 자료에 대한 오류 및 정정은 Github - Issue 를 통해서 제보해주시면 됩니다.
 글을 퍼가셔도 좋으나 출저를 남겨주신다면 감사하겠습니다.
 
+2023 09 월 내용 보강 및 전반적인 내용 정리 예정
+
 ## Chpater
 
 - [Chapter01 - 왜 코루틴을 사용해야 하는가?](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/WHY_USE_COROUTINE.md) 
